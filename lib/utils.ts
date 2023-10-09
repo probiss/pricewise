@@ -15,12 +15,12 @@ export function extractPrice(...elements: any) {
     const priceText = element.text().trim();
 
     if(priceText) {
-      const cleanPrice = priceText.replace(/[^\d.]/g, '');
+      const cleanPrice = priceText.replace(/[^\d,]/g, '');
 
       let firstPrice; 
 
       if (cleanPrice) {
-        firstPrice = cleanPrice.match(/\d+\.\d{2}/)?.[0];
+        firstPrice = cleanPrice.match(/\d+(,\d{1,2})?/)?.[0];
       } 
 
       return firstPrice || cleanPrice;
